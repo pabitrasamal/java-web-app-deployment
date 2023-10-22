@@ -1,9 +1,5 @@
 pipeline {
     agent {label "mnp-dev-app-agent"}
-    tools {
-        jdk "java17"
-        maven "maven3"
-    }
     stages {
         stage ("checkscm") {
             steps {
