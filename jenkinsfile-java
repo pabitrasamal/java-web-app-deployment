@@ -16,5 +16,18 @@ pipeline {
                 sh "mvn test"
             }
         }
+        stage ("Sonar") {
+            steps {
+                script{
+                   withSonarQubeEnv('SonarQube') {
+                       sh "/opt/sonar-scanner/bin/sonar-scanner -X -Dproject.settings=/var/lib/jenkins/workspace/JAVA/sonar-project.properties"
+                   }
+                   sleep(20)
+                   timeout(time: 10, unit: 'MINUTES') {
+                       waitForQualityGate abortPipeline: true
+                   }
+                }
+            }
+        }
     }
 }
