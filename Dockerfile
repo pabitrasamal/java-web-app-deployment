@@ -1,3 +1,14 @@
+# Use an official Tomcat image as the base image
 FROM tomcat:latest
-RUN cp -R  /usr/local/tomcat/webapps.dist/*  /usr/local/tomcat/webapps
-COPY /var/lib/jenkins/workspace/JAVA/webapp/target/webapp.war /usr/local/tomcat/webapps/
+
+# Remove the default Tomcat applications
+RUN rm -rf /usr/local/tomcat/webapps/*
+
+# Copy your WAR file into the Tomcat webapps directory
+COPY ./webapp.war /usr/local/tomcat/webapps/
+
+# Expose the default Tomcat port
+EXPOSE 8080
+
+# Start Tomcat
+CMD ["catalina.sh", "run"]
