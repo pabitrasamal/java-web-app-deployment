@@ -1,5 +1,14 @@
 pipeline {
     agent {label "mnp-dev-app-agent"}
+     environment {
+        APP_NAME = "reddy-devops"
+        RELEASE = "1.0.0"
+        DOCKER_USER = "devopsawsr"
+        DOCKER_PASS = "DockerHub"
+        IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
+        IMAGE_TAG = "${RELEASE}" + "${BUILD_NUMBER}"
+
+    }
     stages {
         stage ("checkscm") {
             steps {
@@ -26,6 +35,17 @@ pipeline {
                    timeout(time: 10, unit: 'MINUTES') {
                        waitForQualityGate abortPipeline: true
                    }
+                }
+            }
+        }
+        stage ("DockerBuild") {
+            steps {
+                script {
+                    docker.withRegistry('',"${DOCKER_PASS}") {
+                    def docker_image = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
+                    docker_image.push("${IMAGE_TAG}")
+                    docker_image.push('latest')
+                    }
                 }
             }
         }
