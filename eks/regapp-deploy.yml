@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: regapp
-        image: devopsawsr/reddy-devops:1.0.067
+        image: devopsawsr/reddy-devops:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
