@@ -1,23 +1,23 @@
 apiVersion: apps/v1 
 kind: Deployment
 metadata:
-  name: regapp-deployment
+  name: tech-deployment
   labels: 
-     app: regapp
+     app: techapp
 
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: regapp
+      app: techapp
 
   template:
     metadata:
       labels:
-        app: regapp
+        app: techapp
     spec:
       containers:
-      - name: regapp
+      - name: techapp
         image: devopsawsr/reddy-devops:latest
         imagePullPolicy: Always
         ports:
