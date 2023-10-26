@@ -1,7 +1,7 @@
 <form action="action_page.php">
   <div class="container">
-    <h1>New user Register for DevOps Learning at Virtual TechBox Youtube Channel</h1>
-    <p>Please fill in this form to create an account.</p>
+    <h1>Welcome to MNP Technologies! Register to become an AWS and DevOps expert with us..</h1>
+    <p>Please diligently complete this form to initiate the account creation process..</p>
     <hr>
      
     <label for="Name"><b>Enter Name</b></label>
