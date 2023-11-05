@@ -1,6 +1,6 @@
 <form action="action_page.php">
   <div class="container">
-    <h1>Welcome to MNP Technologies! Register to become an AWS and DevOps expert with us..</h1>
+    <h1>Welcome to MNP Technologies! Register to become expert in AWS and DevOps with us..</h1>
     <p>Please diligently complete this form to initiate the account creation process..</p>
     <hr>
      
