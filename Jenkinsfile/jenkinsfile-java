@@ -1,8 +1,8 @@
 pipeline {
     agent {label "mnp-dev-app-agent"}
      environment {
-        APP_NAME = "reddy-devops"
-        RELEASE = "1.0.0"
+        APP_NAME = "mnptech-devops"
+        RELEASE = "4.0.0"
         DOCKER_USER = "devopsawsr"
         DOCKER_PASS = "DockerHub"
         IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
