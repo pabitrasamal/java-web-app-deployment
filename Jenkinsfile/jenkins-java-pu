@@ -1,0 +1,41 @@
+pipeline {
+    agent {label "docker"}
+     environment {
+        APP_NAME = "devops"
+        RELEASE = "1.0.0"
+        DOCKER_USER = "purushothamdockers"
+        DOCKER_PASS = "purushothamdockers"
+        IMAGE_NAME = "${DOCKER_USER}" + "/" + "${APP_NAME}"
+        IMAGE_TAG = "${RELEASE}" + "${BUILD_NUMBER}"
+
+    }
+    stages {
+        stage ("checkscm") {
+            steps {
+                checkout scm
+            }
+        }
+        stage ("Build") {
+            steps {
+                sh "mvn clean package"
+            }
+        }
+        stage ("Test") {
+            steps {
+                sh "mvn test"
+                sh "ls /var/lib/jenkins/workspace/JAVA/webapp/target/"
+            }
+        }
+        stage ("DockerBuild") {
+            steps {
+                script {
+                    docker.withRegistry('',"${DOCKER_PASS}") {
+                    def docker_image = docker.build("${IMAGE_NAME}:${IMAGE_TAG}")
+                    docker_image.push("${IMAGE_TAG}")
+                    docker_image.push('latest')
+                    }
+                }
+            }
+        }
+    }
+}
