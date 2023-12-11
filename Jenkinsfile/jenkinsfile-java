@@ -1,5 +1,5 @@
 pipeline {
-    agent {label "mnp-dev-app-agent"}
+    agent any
      environment {
         APP_NAME = "mnptech-devops"
         RELEASE = "4.0.0"
