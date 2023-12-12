@@ -38,7 +38,7 @@ pipeline {
                 echo "BUILD_NUMBER: ${BUILD_NUMBER}"
                 sh "docker images"
                 sh 'echo $DOCKERHUB_CREDENTIALS_PSW | sudo docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-                sh 'docker push ${DOCKER_USR}/${APP_NAME}:${IMAGE_TAG}'
+                sh 'sudo docker push ${DOCKER_USR}/${APP_NAME}:${IMAGE_TAG}'
             }
         }
 
