@@ -6,7 +6,7 @@ metadata:
      app: techapp
 
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       app: techapp
@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: techapp
-        image: devopsawsr/reddy-devops:latest
+        image: devopsawsr/itc-fmcg:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
