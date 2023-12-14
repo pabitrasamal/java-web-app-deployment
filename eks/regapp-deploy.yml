@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
       - name: techapp
-        image: devopsawsr/itc-fmcg:1.0.0-2
+        image: merajaprasd/itc-fmcg:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 8080
