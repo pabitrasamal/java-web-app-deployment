@@ -5,7 +5,7 @@ pipeline {
         APP_NAME = "Java-App"
         RELEASE = "1.0.0"
         DOCKER_USR = "merajaprasd"
-        DOCKERHUB_CREDENTIALS = credentials('merajaprasd-dockerhub')
+        DOCKERHUB_CREDENTIALS = credentials('dockerhub')
         IMAGE_TAG = "${RELEASE}-${BUILD_NUMBER}"
     }
 
